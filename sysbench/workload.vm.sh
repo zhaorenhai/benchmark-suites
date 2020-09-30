@@ -15,8 +15,8 @@ fi
 
 #export MYSQL_HOST="192.168.0.239"
 export MYSQL_HOST="localhost"
-export MYSQL_PORT=4000
-export MYSQL_SOCK="/tmp/n1.sock"
+export MYSQL_PORT=3306
+export MYSQL_SOCK="/tmp/mysql.sock"
 export MYSQL_USER="root"
 #export MYSQL_USER="benchuser"
 export MYSQL_DB=$TESTCASE
@@ -40,13 +40,13 @@ export TABLE_SIZE=1500000
 export TC_TO_RUN="rw upd upd-ni ro ps"
 
 # core allocated to sysbench/client
-export BENCHCORE="0,12,1,13"
+export BENCHCORE="0,7,1,15"
 
 # the sysbench lua scripts location
-export SYSBENCH_LUA_SCRIPT_LOCATION="/usr/share/sysbench"
+export SYSBENCH_LUA_SCRIPT_LOCATION="/usr/local/share/sysbench"
 
 # core on target machine
-servercore=24
+servercore=16
 
 #-------------------------------------------------------------------------------------
 # execution start. avoid modifying anything post this point. All your enviornment
@@ -73,9 +73,8 @@ then
   SOCK="--socket=$MYSQL_SOCK"
 fi
 
-export MYSQL_BASE_DIR=`grep "basedir" conf/n1.cnf | cut -d '=' -f 2`
-export MYSQLCMD="$MYSQL_BASE_DIR/bin/mysql -h $MYSQL_HOST -P $MYSQL_PORT $SOCK \
-            -u $MYSQL_USER --password=$MYSQL_PASSWD"
+#export MYSQL_BASE_DIR=`grep "basedir" conf/n1.cnf | cut -d '=' -f 2`
+export MYSQLCMD="mysql -u $MYSQL_USER --password=$MYSQL_PASSWD"
 
 # if there is no mysql client on local machine then adjust MYSQL_BASE_DIR accordingly.
 if [ $SKIPLOAD -eq 0 ]; then
