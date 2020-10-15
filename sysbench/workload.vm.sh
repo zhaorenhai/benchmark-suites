@@ -3,7 +3,7 @@
 #set -x
 
 if [[ $# -lt 1 ]] || [[ $# -gt 2 ]] ; then
-    echo 'usage: combi_1 <test-case-name> [skipload]'
+    echo 'usage: workload.vm.sh <test-case-name> [skipload]'
     exit 1
 fi
 
