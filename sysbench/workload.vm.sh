@@ -37,10 +37,11 @@ tcchangeover=0
 
 export TABLES=100
 export TABLE_SIZE=1500000
-export TC_TO_RUN="rw upd upd-ni ro ps"
+export TC_TO_RUN="rw"
+#export TC_TO_RUN="rw upd upd-ni ro ps"
 
 # core allocated to sysbench/client
-export BENCHCORE="0,7,1,15"
+export BENCHCORE="0,7,8,15"
 
 # the sysbench lua scripts location
 export SYSBENCH_LUA_SCRIPT_LOCATION="/usr/local/share/sysbench"
