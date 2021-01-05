@@ -14,7 +14,7 @@ if [ "$2" = "skipload" ]; then
 fi
 
 #export MYSQL_HOST="192.168.0.239"
-export MYSQL_HOST="localhost"
+export MYSQL_HOST="127.0.0.1"
 export MYSQL_PORT=3306
 export MYSQL_SOCK="/tmp/mysql.sock"
 export MYSQL_USER="root"
@@ -25,7 +25,8 @@ export MYSQL_PASSWD=""
 
 # tc combination: 120/60/10/10/0
 # workload-warmup time
-warmuptime=120
+#warmuptime=120
+warmuptime=0
 # test-case execution time
 export TIME_PER_TC=60
 # test-case warmup time
@@ -37,11 +38,11 @@ tcchangeover=0
 
 export TABLES=100
 export TABLE_SIZE=1500000
-export TC_TO_RUN="rw"
+#export TC_TO_RUN="rw"
 #export TC_TO_RUN="rw upd upd-ni ro ps"
 
 # core allocated to sysbench/client
-export BENCHCORE="0,7,8,15"
+export BENCHCORE="0,7"
 
 # the sysbench lua scripts location
 export SYSBENCH_LUA_SCRIPT_LOCATION="/usr/local/share/sysbench"

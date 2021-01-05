@@ -27,7 +27,8 @@ fi
 $TASKSET sysbench --threads=$THDS --time=$TIME_PER_TC --rate=0 --report-interval=5 \
          --db-driver=mysql --rand-type=zipfian --rand-zipfian-exp=1.5 \
 	 --warmup-time=$WARMUP_PER_TC \
-         --mysql-host=$MYSQL_HOST --mysql-port=$MYSQL_PORT $SOCK \
+         $SOCK \
+         --mysql-host=$MYSQL_HOST --mysql-port=$MYSQL_PORT \
          --mysql-db=$MYSQL_DB \
          --mysql-user=$MYSQL_USER --mysql-password=$MYSQL_PASSWD \
          $TC --tables=$TABLES --table-size=$TABLE_SIZE run
